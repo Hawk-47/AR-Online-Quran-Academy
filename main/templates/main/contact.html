@@ -1,0 +1,59 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+<section class="contact container">
+    <h2>Contact Us</h2>
+    <p>We’d love to hear from you! Send us your questions or feedback below.</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit" class="btn">Send Message</button>
+    </form>
+
+    {% if success %}
+    <p class="success">✅ Your message has been sent successfully!</p>
+    {% endif %}
+
+</section>
+<!-- 📞 Contact Info Section -->
+<section class="contact-info">
+    <h3>Contact Information</h3>
+    <p>Have any Questions...!</p>
+
+    <div class="info-boxes">
+        <!-- Contact Number -->
+        <div class="info-card">
+            <div class="icon"><i class="fas fa-phone"></i></div>
+            <h4>Our Contact Number</h4>
+            <p>+44 203 289 9880<br>+1 330 597 5880</p>
+        </div>
+
+        <!-- WhatsApp -->
+        <div class="info-card">
+            <div class="icon"><i class="fab fa-whatsapp"></i></div>
+            <h4>Our WhatsApp</h4>
+            <a href="https://wa.me/923083636377" class="enroll-btn">
+                <i class="fa-brands fa-whatsapp"></i> &nbsp; +92 308 3636377
+            </a>
+        </div>
+
+        <!-- Email -->
+        <div class="info-card">
+            <div class="icon"><i class="fas fa-envelope"></i></div>
+            <h4>Write Some Words</h4>
+            <a href="mailto:hkaleem556@gmail.com" style="color: rgb(6, 5, 1);">
+                <i class="fa-solid fa-envelope" style="color: antiquewhite;"></i> hkaleem556@gmail.com
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

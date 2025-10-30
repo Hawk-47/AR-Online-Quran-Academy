@@ -1,0 +1,450 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Online Quran Academy</title>
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ===== BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ===== TOP BAR ===== */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #0a3a0a;
+            color: white;
+            z-index: 1000;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            height: 40px;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .top-bar a {
+            color: antiquewhite;
+            text-decoration: none;
+        }
+
+        .top-bar .right i {
+            margin-left: 15px;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        /* ===== HEADER & NAVBAR ===== */
+        .main-header {
+            margin-top: 40px;
+            background: linear-gradient(135deg, #1a5e1a 0%, #2d8b2d 100%);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 40px;
+            z-index: 999;
+            padding: 10px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        /* ===== LOGO SECTION ===== */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logo h1 {
+            font-size: 1.6rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        /* ===== DESKTOP NAVIGATION ===== */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 6px;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* ===== MOBILE MENU BUTTON ===== */
+        .mobile-menu {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+
+        /* ===== MOBILE NAVIGATION ===== */
+        @media screen and (max-width: 768px) {
+
+            /* Hide desktop navigation */
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, #1a5e1a 0%, #2d8b2d 100%);
+                flex-direction: column;
+                gap: 0;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                z-index: 1000;
+            }
+
+            /* Show mobile menu when active */
+            nav ul.active {
+                display: flex;
+            }
+
+            nav a {
+                display: block;
+                padding: 15px 20px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            /* Show mobile menu button */
+            .mobile-menu {
+                display: block;
+            }
+
+            /* Adjust logo for mobile */
+            .logo h1 {
+                font-size: 1.3rem;
+            }
+
+            .logo-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            /* Top bar adjustments */
+            .top-bar {
+                font-size: 0.8rem;
+                height: 35px;
+            }
+
+            .top-bar .container {
+                flex-direction: column;
+                gap: 3px;
+            }
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            position: relative;
+            height: 85vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            animation: sliderAnimation 18s infinite;
+            transition: background-image 1s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes sliderAnimation {
+            0% {
+                background-image: url("{% static 'main/images/slider1.jpg' %}");
+            }
+
+            33% {
+                background-image: url("{% static 'main/images/slider2.jpg' %}");
+            }
+
+            66% {
+                background-image: url("{% static 'main/images/slider3.jpg' %}");
+            }
+
+            100% {
+                background-image: url("{% static 'main/images/slider1.jpg' %}");
+            }
+        }
+
+        .hero-text {
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .bismillah {
+            width: 200px;
+            margin-bottom: 25px;
+            filter: brightness(0) invert(1);
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+
+        .hero-text h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #2d8b2d;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #1a5e1a;
+            transform: translateY(-3px);
+        }
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+            background-color: #0a3a0a;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-column p,
+        .footer-column a {
+            margin-bottom: 10px;
+            display: block;
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+        }
+
+        /* ===== RESPONSIVE HERO ===== */
+        @media screen and (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text h2 {
+                font-size: 1.4rem;
+            }
+
+            .bismillah {
+                width: 150px;
+            }
+
+            .hero {
+                height: 70vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 🔝 Top Contact Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="left">
+                <a href="https://wa.me/923083636377" style="color: antiquewhite;">
+                    <i class="fa-brands fa-whatsapp" style="color: antiquewhite;"></i> &nbsp;PK +92 3083636377
+                </a> &nbsp;&nbsp;
+                <i class="fa-solid fa-envelope" style="color: antiquewhite;"></i> hkaleem556@gmail.com
+            </div>
+            <div class="right">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-linkedin"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🕌 Header Section (Logo + Navbar) -->
+    <header class="main-header">
+        <div class="container nav-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="{% static 'main/images/aronlinequran.jpg' %}" alt="Logo">
+                </div>
+                <h1>AR Online Quran Academy</h1>
+            </div>
+
+            <button class="mobile-menu" id="mobile-menu">
+                ☰
+            </button>
+
+            <nav>
+                <ul id="nav-menu">
+                    <a href="{% url 'main:home' %}">Home</a>
+                    <a href="{% url 'main:about' %}">About</a>
+                    <a href="{% url 'main:courses' %}">Courses</a>
+                    <a href="{% url 'main:contact' %}">Contact</a>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 🌙 Hero Section (Sliding Background) -->
+    <section class="hero">
+        <div class="hero-text">
+            <img src="{% static 'main/images/bismillah.png' %}" alt="Bismillah" class="bismillah">
+            <h2>Expert Tutors</h2>
+            <h1>AR Online Quran Academy</h1>
+            <p>Learn Quran online with qualified teachers from the comfort of your home</p>
+            <a href="https://wa.me/923083636377" class="cta-button">Start Learning Today</a>
+        </div>
+    </section>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- 🦶 Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>AR Online Quran Academy</h3>
+                    <p>Providing quality online Quran education since 2010. We are committed to helping students of all
+                        ages learn and understand the Holy Quran.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-phone"></i> +92 308 3636377</p>
+                    <p><i class="fas fa-envelope"></i> hkaleem556@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 30 W. 26th Street, Sixth Floor, New York NY 10010</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="{% url 'main:home' %}">Home</a>
+                    <a href="{% url 'main:about' %}">About Us</a>
+                    <a href="{% url 'main:courses' %}">Courses</a>
+                    <a href="{% url 'main:contact' %}">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AR Online Quran Academy | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle - FIXED
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent event bubbling
+            navMenu.classList.toggle('active');
+
+            // Change menu icon
+            if (navMenu.classList.contains('active')) {
+                mobileMenu.innerHTML = '✕';
+            } else {
+                mobileMenu.innerHTML = '☰';
+            }
+        });
+
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenu.innerHTML = '☰';
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !mobileMenu.contains(e.target)) {
+                navMenu.classList.remove('active');
+                mobileMenu.innerHTML = '☰';
+            }
+        });
+    </script>
+</body>
+
+</html>

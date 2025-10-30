@@ -1,0 +1,66 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="courses-section py-5">
+    <div class="container text-center">
+        <h2 class="mb-4 section-title">Our Quran Courses</h2>
+        <p class="text-muted mb-5">
+            Choose from our structured Quran courses designed for all ages and levels.
+        </p>
+
+        <div class="row justify-content-center">
+
+            <!-- 📘 Hifz-e-Quran -->
+            <div class="col-md-4 mb-4">
+                <div class="course-card">
+                    <img src="{% static 'main/images/Hifzequran' %}" alt="Hifz-e-Quran">
+                    <div class="course-content">
+                        <h5>Hifz-e-Quran</h5>
+                        <p>Learn and memorize the Holy Quran with expert Huffaz.</p>
+                        <a href="{% url 'main:course_detail' 1 %}" class="details-btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 📖 Nazra Quran -->
+            <div class="col-md-4 mb-4">
+                <div class="course-card">
+                    <img src="{% static 'main/images/nazra.jpg' %}" alt="Nazra Quran">
+                    <div class="course-content">
+                        <h5>Nazra Quran</h5>
+                        <p>Learn Quran recitation with proper pronunciation.</p>
+                        <a href="{% url 'main:course_detail' 2 %}" class="details-btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🕋 Tajweed Course -->
+            <div class="col-md-4 mb-4">
+                <div class="course-card">
+                    <img src="{% static 'main/images/MasnoonDuas.jpg' %}" alt="Tajweed Course">
+                    <div class="course-content">
+                        <h5>Masnoon Duas</h5>
+                        <p>Learn the daily Masnoon Duas to bring peace, blessings, and remembrance of Allah into your
+                            everyday life..</p>
+                        <a href="{% url 'main:course_detail' 3 %}" class="details-btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ✨ Enroll Section -->
+<section class="enroll-section text-center py-5 bg-light">
+    <div class="container">
+        <h3 class="fw-bold mb-3">Interested in Joining a Course?</h3>
+        <p class="text-muted mb-4">
+            Contact us today and start your Quran learning journey online with experienced tutors.
+        </p>
+        <a href="{% url 'main:contact' %}" class="btn enroll-btn">Enroll Now</a>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,111 @@
+/* reset-ish */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.site-header {
+    background: #0b3d91;
+    /* deep blue - change later to brand color */
+    color: white;
+    padding: 12px 0;
+}
+
+.site-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-header nav a {
+    color: white;
+    margin-left: 12px;
+    text-decoration: none;
+}
+
+.hero {
+    background: linear-gradient(135deg, #0b3d91 0%, #1e90ff 100%);
+    color: white;
+    padding: 60px 0;
+    margin-bottom: 20px;
+}
+
+.hero .hero-inner {
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 18px;
+    background: white;
+    color: #0b3d91;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-top: 12px;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.feature {
+    background: #f7f7f7;
+    padding: 18px;
+    border-radius: 8px;
+}
+
+.site-footer {
+    background: #222;
+    color: #ddd;
+    padding: 14px 0;
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* contact css */
+.contact {
+    padding: 40px 0;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: auto;
+    gap: 10px;
+}
+
+.contact input,
+.contact textarea {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.contact .btn {
+    background: #0d6efd;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.success {
+    color: green;
+    text-align: center;
+    margin-top: 15px;
+}

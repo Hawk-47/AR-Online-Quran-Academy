@@ -1,0 +1,108 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+
+<!-- ✨ Features Section -->
+<section class="features">
+    <div class="container">
+        <h2 class="section-title">Why Choose Our Academy</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h3>Qualified Teachers</h3>
+                <p>Our tutors are certified with years of experience in teaching Quran</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-laptop-house"></i>
+                </div>
+                <h3>Learn From Home</h3>
+                <p>Study from the comfort of your home with flexible scheduling</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h3>Comprehensive Courses</h3>
+                <p>From basic Quran reading to advanced Tajweed and Tafseer</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>Flexible Timings</h3>
+                <p>Choose class timings that work best for you and your family</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 📚 Courses Preview Section -->
+<section class="courses">
+    <div class="container">
+        <h2 class="section-title">Our Popular Courses</h2>
+        <div class="courses-grid">
+            <div class="course-card">
+                <div class="course-img">
+                    <i class="fas fa-book-quran"></i>
+                </div>
+                <div class="course-content">
+                    <h3>Quran Reading Basics</h3>
+                    <p>Learn how to read Quran with proper pronunciation from scratch</p>
+                    <a href="{% url 'main:courses' %}" class="course-btn">Learn More</a>
+                </div>
+            </div>
+            <div class="course-card">
+                <div class="course-img">
+                    <i class="fas fa-microphone"></i>
+                </div>
+                <div class="course-content">
+                    <h3>Tajweed & Recitation</h3>
+                    <p>Master the rules of Tajweed for beautiful Quran recitation</p>
+                    <a href="{% url 'main:courses' %}" class="course-btn">Learn More</a>
+                </div>
+            </div>
+            <div class="course-card">
+                <div class="course-img">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="course-content">
+                    <h3>Quran Memorization</h3>
+                    <p>Systematic approach to memorize Quran with understanding</p>
+                    <a href="{% url 'main:courses' %}" class="course-btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container hero-inner">
+        <h2>{{ tagline }}</h2>
+        <p>Join our Nazra, Hifz, Tajweed & Masnoon Duas courses with expert tutors.</p>
+        <a class="btn" href="{% url 'main:courses' %}">View All Courses</a>
+    </div>
+</section>
+
+<!-- Dynamic Courses Section -->
+<section class="features container" style="margin-top: 40px;">
+    {% for course in courses %}
+    <div class="feature"
+        style="background:#f9f9f9; border-radius:10px; padding:20px; margin-bottom:20px; box-shadow:0 0 5px rgba(0,0,0,0.1);">
+        {% if course.image %}
+        <img src="{{ course.image.url }}" alt="{{ course.title }}"
+            style="width:100%; border-radius:10px; margin-bottom:10px;">
+        {% endif %}
+        <h3>{{ course.title }}</h3>
+        <p>{{ course.description }}</p>
+        <p><strong>Duration:</strong> {{ course.duration }}</p>
+        <p><strong>Instructor:</strong> {{ course.instructor }}</p>
+    </div>
+    {% empty %}
+    <p style="text-align:center;">No courses available yet. Please check back later.</p>
+    {% endfor %}
+</section>
+
+{% endblock %}
